@@ -1,6 +1,8 @@
 $(document).ready(function()
         { 
             cont=0;
+            var flag = new Boolean(false);
+
             $("#agregar").click(function()
             {  
                 // Funcion generar numero random con dos args
@@ -14,24 +16,28 @@ $(document).ready(function()
                 
                 
                 // generar num aleatorio no repetido
-                if(seguir != true){
-                               
-                    var nums = [1,2,3,4,5,6,7,8,9,10],
-                        i = nums.length,
-                        j = 0;
-                    let ranNums = [];
-                    while (i--) {
-                        j = getRandom(1, 10);  
-                        ranNums.push(""+nums[j]);
-                        nums.splice(j,1);   
-                    }
-                }
+                                              
+                      
+                            
+                const aleatorios = []; 
+                function dropUnicos(){
+                    Narray = [1,2,3,4,5,6,7,8,9,10];                     
+                    var num = getRandom(1, 2);                    
 
-                
-                
-               
-                
-                
+                    for(var i=0;i<Narray.length; i++)
+                    {
+                        if(num ==Narray[i] ){
+                        aleatorios.push("Otro"+Narray[i])
+                        }else{
+                        aleatorios.push("Usuario"+Narray[i])
+                        }
+                        
+
+                    }
+                    return "listo";
+            }
+            var test = dropUnicos()
+         
                 // Generar  de género
                 function randomgen(){
                     numrandom = getRandom(1, 2);                     
@@ -46,14 +52,15 @@ $(document).ready(function()
 
 
                 // Generar edad
-                edad = numrandom = getRandom(1, 40);                 
+                edad = getRandom(1, 40);                 
 
                
                 // Mostrar datos en html
                 if (cont<10){
+                    flag = true;
                     
                     var add = "<tr>"
-                    add+="<td>"+ranNums[cont]+"</td>"
+                    add+="<td>"+aleatorios[cont]+"</td>"
                     add+="<td>"+genero+"</td>"
                     add+="<td>"+edad+"</td>"
                     add+="<tr>"                
